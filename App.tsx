@@ -47,7 +47,8 @@ export default function App() {
       .select('*')
       .order('created_at', { ascending: false })
     if (error) {
-      showToast('Failed to load books', 'error')
+      console.error('Supabase error:', error)
+      showToast(`Failed: ${error.message}`, 'error')
     } else {
       setBooks(data || [])
     }
